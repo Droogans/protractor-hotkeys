@@ -1,0 +1,42 @@
+{
+  "name": "protractor-hotkeys",
+  "version": "0.0.1",
+  "description": "Simpler API for triggering keyboard shortcuts in Protractor tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jshint": "npm bin jshint -c .jshintrc",
+    "jslint": "npm bin jslint -c .jscs.json",
+    "unit": "npm bin mocha -r test.js",
+    "serve": "node scripts/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Droogans/protractor-hotkeys.git"
+  },
+  "keywords": [
+    "selenium",
+    "protractor",
+    "hotkeys",
+    "keyboard",
+    "shortcuts",
+    "keyboard",
+    "chord"
+  ],
+  "author": "Andrew Yurisich <droogans@gmail.com> (http://andrew.yurisich.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Droogans/protractor-hotkeys/issues"
+  },
+  "homepage": "https://github.com/Droogans/protractor-hotkeys#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.1.0",
+    "http-server": "^0.8.5",
+    "mocha": "^2.3.4"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "protractor": "^3.0.0"
+  }
+}
