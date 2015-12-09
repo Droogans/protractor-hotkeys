@@ -74,7 +74,7 @@ var hotkeyAliases = {
 
 exports.HOTKEYS = _.extend(hotkeyMap, hotkeyAliases);
 
-var codify = function (list) {
+exports.codify = function (list) {
     return list.map(function (member) {
         member.trim();
         return exports.HOTKEYS[member] || member;
@@ -87,10 +87,10 @@ exports.trigger = function (command, options) {
     }
 
     // 'a b ctrl+shift+c' -> ['a', 'b', 'ctrl+shift+c']
-    commands = codify(command.split(' '));
+    commands = exports.codify(command.split(' '));
     // ['a', 'b', 'ctrl+shift+c'] -> [['a'], ['b'], [Key.CONTROL, Key.SHIFT, 'c']]
     commands = commands.map(function (keypressCode) {
-        return codify(keypressCode.split(options.delimeter || '+'));
+        return exports.codify(keypressCode.split(options.delimeter || '+'));
     });
 
     var target = options.targetElement || $('html');
