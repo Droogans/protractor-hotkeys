@@ -27,13 +27,13 @@ function TestController (hotkeys) {
         'f1', 'f10',
         'ctrl+up', 'ctrl+down',
         'alt+up', 'alt+down',
-        'ctrl+x s', 'ctrl+x c',
         'pageup', 'pagedown',
         'home', 'end',
         'backspace', 'del',
         'capslock', 'space',
         'up down left right a b a b enter',
         'ctrl+shift+down+space a',
+        'ctrl+x ctrl+s ctrl+x ctrl+c',
         '{+!'
     ].map(add);
 

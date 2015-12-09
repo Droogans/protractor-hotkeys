@@ -110,6 +110,14 @@ describe('hotkeys', function () {
         expect(page.text).to.eventually.equal('ctrl + ⇧ + ↓ + space,a key pressed');
     });
 
+    it('should support several complex hotkey shortcuts in the same call', function () {
+        hotkey.trigger('ctrl+x ctrl+s ctrl+x ctrl+c');
+        expect(page.text).to.eventually.equal('ctrl + x,ctrl + s,ctrl + x,ctrl + c key pressed');
+
+        hotkey.trigger('control+x control+s').trigger('control+x control+c');
+        expect(page.text).to.eventually.equal('ctrl + x,ctrl + s,ctrl + x,ctrl + c key pressed');
+    });
+
     it('should allow for a custom delimiter', function () {
         hotkey.trigger('{-!', { delimteter: '-' });
         expect(page.text).to.eventually.equal('{ + ! key pressed');
