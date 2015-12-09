@@ -16,7 +16,6 @@ exports.config = {
     params: {},
 
     onPrepare: function () {
-        debugger;
         expect = require('chai').use(require('chai-as-promised')).expect;
     },
 

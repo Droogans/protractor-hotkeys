@@ -17,8 +17,25 @@ function TestController (hotkeys) {
         });
     };
 
-    ['?', 'escape', 'g g', 'tab', 'shift+tab', 'left', 'right', '+', '*++',
-     'up down left right a b a b enter', 'ctrl+shift+down+space a'].map(add);
+    // I can only test the most common, platform independent shortcuts.
+    [
+        'i', 'I',
+        'g g', 'G G',
+        '?', 'escape',
+        'left', 'right',
+        'tab', 'shift+tab',
+        'f1', 'f10',
+        'ctrl+up', 'ctrl+down',
+        'alt+up', 'alt+down',
+        'ctrl+x s', 'ctrl+x c',
+        'pageup', 'pagedown',
+        'home', 'end',
+        'backspace', 'del',
+        'capslock', 'space',
+        'up down left right a b a b enter',
+        'ctrl+shift+down+space a',
+        '{+!'
+    ].map(add);
 
 };
 

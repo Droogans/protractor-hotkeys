@@ -2,7 +2,6 @@ var _ = require('lodash');
 
 var Key = protractor.Key;
 
-
 var hotkeyMap = {
      '*': Key.MULTIPLY,
      '+': Key.ADD,
@@ -24,6 +23,7 @@ var hotkeyMap = {
      alt: Key.ALT,
      backspace: Key.BACK_SPACE,
      cancel: Key.CANCEL,
+     capslock: Key.CAPS_LOCK,
      clear: Key.CLEAR,
      command: Key.COMMAND,
      control: Key.CONTROL,
@@ -66,9 +66,9 @@ var hotkeyAliases = {
     cmd: hotkeyMap.mod,
     command: hotkeyMap.mod,
     ctrl: hotkeyMap.control,
-    del: hotkeyMap.delete
+    del: hotkeyMap.delete,
     esc: hotkeyMap.escape,
-    super: hotkeyMap.mod
+    super: hotkeyMap.mod,
     windowsKey: hotkeyMap.mod,
 };
 
@@ -77,29 +77,25 @@ exports.HOTKEYS = _.extend(hotkeyMap, hotkeyAliases);
 var codify = function (list) {
     return list.map(function (member) {
         member.trim();
-        return exports.HOTKEYS[member];
+        return exports.HOTKEYS[member] || member;
     });
 };
 
-exports.trigger = function (command) {
-    command = command.toLowerCase();
+exports.trigger = function (command, options) {
+    if (options === undefined) {
+        options = {};
+    }
 
     // 'a b ctrl+shift+c' -> ['a', 'b', 'ctrl+shift+c']
     commands = codify(command.split(' '));
-    // ['a', 'b', 'ctrl+shift+c'] -> ['a', 'b', ['ctrl', 'shift', 'c']]
+    // ['a', 'b', 'ctrl+shift+c'] -> [['a'], ['b'], [Key.CONTROL, Key.SHIFT, 'c']]
     commands = commands.map(function (keypressCode) {
-        return codify(keypressCode.split('+'));
+        return codify(keypressCode.split(options.delimeter || '+'));
     });
 
+    var target = options.targetElement || $('html');
     commands.forEach(function (command) {
-        if (_.isArray(command)) {
-            var sequence = browser.actions();
-            command.map(sequence.keyDown);
-            command.map(sequence.keyUp);
-            sequence.perform();
-        } else {
-            browser.actions().keyDown(command).keyUp(command).perform();
-        }
+        target.sendKeys.apply(target, command);
     });
 
     // return this same function for chaining
