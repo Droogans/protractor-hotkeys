@@ -93,7 +93,7 @@ exports.trigger = function (command, options) {
         return exports.codify(keypressCode.split(options.delimeter || '+'));
     });
 
-    var target = options.targetElement || $('html');
+    var target = options.targetElement || $('body');
     commands.forEach(function (command) {
         target.sendKeys.apply(target, command);
     });

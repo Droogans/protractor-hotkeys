@@ -7,9 +7,11 @@ exports.config = {
 
     framework: 'mocha',
 
-    capabilities: {
+    multiCapabilities: [{
         browserName: 'firefox',
-    },
+    }, {
+        browserName: 'chrome',
+    }],
 
     allScriptsTimeout: 30000,
 
