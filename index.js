@@ -1,8 +1,11 @@
 var _ = require('lodash');
+var protractor = require('protractor');
 
 var Key = protractor.Key;
 
-var hotkeyMap = {
+var hotkeyMap;
+
+exports.hotkeyMap = hotkeyMap = {
      '*': Key.MULTIPLY,
      '+': Key.ADD,
      '-': Key.SUBTRACT,
@@ -61,7 +64,7 @@ var hotkeyMap = {
      up: Key.ARROW_UP,
 };
 
-var hotkeyAliases = {
+exports.hotkeyAliases = {
     caps: hotkeyMap.capslock,
     cmd: hotkeyMap.mod,
     command: hotkeyMap.mod,
@@ -72,7 +75,7 @@ var hotkeyAliases = {
     windowsKey: hotkeyMap.mod,
 };
 
-exports.HOTKEYS = _.extend(hotkeyMap, hotkeyAliases);
+exports.HOTKEYS = _.extend(hotkeyMap, exports.hotkeyAliases);
 
 exports.codify = function (list) {
     return list.map(function (member) {
@@ -87,7 +90,7 @@ exports.trigger = function (command, options) {
     }
 
     // 'a b ctrl+shift+c' -> ['a', 'b', 'ctrl+shift+c']
-    commands = exports.codify(command.split(' '));
+    var commands = exports.codify(command.split(' '));
     // ['a', 'b', 'ctrl+shift+c'] -> [['a'], ['b'], [Key.CONTROL, Key.SHIFT, 'c']]
     commands = commands.map(function (keypressCode) {
         return exports.codify(keypressCode.split('+'));
