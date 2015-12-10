@@ -89,9 +89,10 @@ describe('hotkeys', function () {
 
     it('should support chaining long hotkey shortcuts', function () {
         hotkey
-            .trigger('up down left right')
-            .trigger('a b a b enter');
-        expect(page.text).to.eventually.equal('↑,↓,←,→,a,b,a,b,enter key pressed');
+            .trigger('up up down down')
+            .trigger('left right left right')
+            .trigger('b a enter');
+        expect(page.text).to.eventually.equal('↑,↑,↓,↓,←,→,←,→,b,a,enter key pressed');
     });
 
     it('should support complex hotkey shortcuts', function () {
@@ -116,11 +117,6 @@ describe('hotkeys', function () {
 
         hotkey.trigger('control+x control+s').trigger('control+x control+c');
         expect(page.text).to.eventually.equal('ctrl + x,ctrl + s,ctrl + x,ctrl + c key pressed');
-    });
-
-    it('should allow for a custom delimiter', function () {
-        hotkey.trigger('{-!', { delimteter: '-' });
-        expect(page.text).to.eventually.equal('{ + ! key pressed');
     });
 
 });

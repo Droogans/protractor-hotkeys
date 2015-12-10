@@ -90,7 +90,7 @@ exports.trigger = function (command, options) {
     commands = exports.codify(command.split(' '));
     // ['a', 'b', 'ctrl+shift+c'] -> [['a'], ['b'], [Key.CONTROL, Key.SHIFT, 'c']]
     commands = commands.map(function (keypressCode) {
-        return exports.codify(keypressCode.split(options.delimeter || '+'));
+        return exports.codify(keypressCode.split('+'));
     });
 
     var target = options.targetElement || $('body');
