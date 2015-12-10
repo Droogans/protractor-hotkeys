@@ -31,10 +31,9 @@ function TestController (hotkeys) {
         'home', 'end',
         'backspace', 'del',
         'capslock', 'space',
-        'up down left right a b a b enter',
+        'up up down down left right left right b a enter',
         'ctrl+shift+down+space a',
         'ctrl+x ctrl+s ctrl+x ctrl+c',
-        '{+!'
     ].map(add);
 
 };
