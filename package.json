@@ -6,8 +6,9 @@
   "scripts": {
     "jshint": "`npm bin`/jshint -c .jshintrc index.js test/*.js test/**/*.js scripts/*.js",
     "jscs": "`npm bin`/jscs -c .jscs.json index.js test/*.js scripts/*.js",
-    "unit": "`npm bin`/mocha --require 'test/setupExpect.js' test/unit.js",
-    "serve": "node scripts/server.js"
+    "postinstall": "ln -s ../../.precommit-hook .git/hooks/pre-commit",
+    "serve": "node scripts/server.js",
+    "unit": "`npm bin`/mocha --require 'test/setupExpect.js' test/unit.js"
   },
   "repository": {
     "type": "git",
