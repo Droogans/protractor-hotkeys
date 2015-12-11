@@ -36,8 +36,8 @@ function TestController (hotkeys) {
         'ctrl+x ctrl+s ctrl+x ctrl+c',
     ].map(add);
 
-};
+}
 
 TestController.prototype.setMessage = function (message) {
     this.message = message;
-}
+};

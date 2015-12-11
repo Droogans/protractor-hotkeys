@@ -1,13 +1,12 @@
 {
   "name": "protractor-hotkeys",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simpler API for triggering keyboard shortcuts in Protractor tests",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "jshint": "npm bin jshint -c .jshintrc",
-    "jslint": "npm bin jslint -c .jscs.json",
-    "unit": "npm bin mocha -r test.js",
+    "jshint": "`npm bin`/jshint -c .jshintrc index.js test/*.js test/**/*.js scripts/*.js",
+    "jscs": "`npm bin`/jscs -c .jscs.json index.js test/*.js scripts/*.js",
+    "unit": "`npm bin`/mocha --require 'test/setupExpect.js' test/unit.js",
     "serve": "node scripts/server.js"
   },
   "repository": {
@@ -23,6 +22,9 @@
     "keyboard",
     "chord"
   ],
+  "engines": {
+    "node": ">=4.0.0 <=5.1.1"
+  },
   "author": "Andrew Yurisich <droogans@gmail.com> (http://andrew.yurisich.com/)",
   "license": "MIT",
   "bugs": {
@@ -33,6 +35,8 @@
     "chai": "^3.4.1",
     "chai-as-promised": "^5.1.0",
     "http-server": "^0.8.5",
+    "jscs": "^2.7.0",
+    "jshint": "^2.8.0",
     "mocha": "^2.3.4"
   },
   "dependencies": {
