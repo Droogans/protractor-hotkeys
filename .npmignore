@@ -1,2 +1,4 @@
 test
-.npmrc
+scripts
+protractor.conf.js
+.*
