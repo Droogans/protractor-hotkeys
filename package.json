@@ -1,6 +1,6 @@
 {
   "name": "protractor-hotkeys",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An angular-hotkeys styled API for triggering keyboard shortcuts in Protractor tests",
   "main": "index.js",
   "scripts": {
