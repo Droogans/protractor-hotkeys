@@ -31,7 +31,7 @@ hotkeys.trigger('g g', { targetElement: $('.content-area') });
 
 ## Testing
 
-This works on Firefox and Mac. I only test the easiest, platform-independent shortcuts. Hopefully I have captured most of the testing surface with these.
+This works on Firefox and Chrome on Mac. I only test the easiest, platform-independent shortcuts. Hopefully I have captured most of the testing surface with these.
 
  - single characters (`'i'`, `'I'`, `'?'`)
  - single characters pressed in succession (`'g g'`, `'G G'`)
